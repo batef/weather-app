@@ -22,8 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             HavaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Hava",
+                    MainScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -33,9 +32,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun MainScreen(modifier: Modifier = Modifier) {
+    ContentCard(
+        title = "Hava Durumu",
+        description = "Hava durumunu görmek için uygulamayı kullanabilirsiniz.",
+        modifier = modifier
+    )
+}
+
+@Composable
+fun ContentCard(
+    title: String,
+    description: String,
+    modifier: Modifier = Modifier
+) {
     Text(
-        text = "Hello $name!",
+        text = title,
         modifier = modifier
     )
 }
@@ -44,6 +56,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 private fun GreetingPreview() {
     HavaTheme {
-        Greeting("Hava")
+        MainScreen()
     }
 }
